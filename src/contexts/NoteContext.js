@@ -6,7 +6,7 @@ let notesArray = [];
 const NoteState = (props) => {
     const [notes, setNote] = useState(notesArray);
     // const host = 'http://localhost:80/api/notes';
-    const host = 'https://expensive-gold-cobra.cyclic.app/api/notes';
+    const host = `${REACT_APP_API_BASE_URL}/notes`;
 
     // method for fetching all notes of the user with fetch API
     const fetchNotes = () => {

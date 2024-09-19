@@ -3,7 +3,7 @@ import React, { useState, createContext, useEffect } from "react";
 export const AuthContext = createContext();
 
 function AuthState(props) {
-    const url = 'https://expensive-gold-cobra.cyclic.app/api/auth' || 'http://localhost:80/api/auth';
+    const url = `${REACT_APP_API_BASE_URL}/auth` || 'http://localhost:80/api/auth';
     // const url = 'http://localhost:80/api/auth';
 
     const [isLoggedin, setIsLoggedin] = useState(false);
