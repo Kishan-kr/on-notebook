@@ -1,65 +1,60 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { noteContext } from '../contexts/NoteContext'
 import NoteItem from './NoteItem';
-import { Link, useLocation } from "react-router-dom";
-import AddNote from './AddNote';
-import OpenNote from './OpenNote';
+import { Link, useNavigate } from "react-router-dom";
+import emptyNotes from './illustration/emptyNotes.svg';
 
-function NoteSide(props) {
-
-    let location = useLocation();
+function NoteSide() {
+    
+    let navigate = useNavigate();
 
     const { notes, fetchNotes } = useContext(noteContext);
 
-    const [readNote, setReadNote] = useState(notes[0]?notes[0]:{});
-    const readingNote = (note) => {
-        setReadNote(note);
-    }
+    useEffect(() => {
+        // if user is not logged in it will redirect to login page 
+        if(!localStorage.getItem('token')) {
+           return navigate("/login");
+        }
+        // eslint-disable-next-line
+    },[localStorage.getItem('token')]);
 
     useEffect(() => {
-        if(localStorage.getItem('token'))
+        if (localStorage.getItem('token'))
             fetchNotes();
         // eslint-disable-next-line
     }, [])
 
-    if (location.pathname === '/notes') {
-        return (
-            <>
-                <div className="d-flex my-2 align-items-center">
-                    <h4 className="notes m-0">Notes</h4>
+    return (
+        <div className='m-0 px-2 noteside'>
+            <div className="d-flex my-2 align-items-center">
+                <h4 className="m-0 mx-3 dark-text">Notes</h4>
 
-                    <Link className="ms-auto " to="/notes/addnote">
-                        <button type="button" title='Add New Note' className="btn btn-outline-secondary">Add Note</button>
-                    </Link>
-                </div>
-                <div className="container">
-                    {!notes[0] ? <p>You do not have any notes, create some using 'Add Note' button</p> :
-                        <div className="row">{
-                            notes.map(note => {
-                                return <NoteItem note={note} key={note._id} handleUpdateIcon={props.handleUpdateIcon} readingNote={readingNote} />
-                            })
-                        }
-                        </div>
+
+            </div>
+            <div className="container">
+                {!notes[0] ?
+                    <div className="empty d-flex flex-column justify-content-center align-items-center p-1">
+                        <img src={emptyNotes} alt="Empty" className='empty-svg m-3' />
+                        <p className='fs-5 px-4 text-center'>You do not have any notes, Please add some</p>
+                        <Link className="" to="/notes/addnote">
+                            <button className='btn btn-outline-success'>Add Notes</button>
+                        </Link>
+
+                    </div> :
+
+                    <div className="row notes-container">{
+                        notes.map(note => {
+                            return <NoteItem key={note._id} note={note}/>
+                        })
                     }
-                </div>
-            </>
-        )
-    }
-    else if (location.pathname === '/notes/addnote') {
-        return (
-            <AddNote />
-        )
-    }
-    else if (location.pathname === '/notes/view') {
-        return (
-            <>
-                <div className="d-flex my-2 align-items-center">
-                    <h4 className="notes m-0">Notes</h4>
-                </div>
-                <OpenNote readNote={readNote} setReadNote={setReadNote} handleUpdateIcon={props.handleUpdateIcon} />
-            </>
-        )
-    }
+                    </div>
+                }
+            </div>
+            <Link to={'/notes/addnote'} title="Add Note" className="btn btn-add dark-text rounded-circle p-0">
+                <i className="fa-solid fa-circle-plus fa-3x "></i>
+            </Link>
+        </div>
+    )
 }
 
 export default NoteSide

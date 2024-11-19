@@ -35,25 +35,22 @@ function AddNote() {
     }
 
     return (
-        <div className='m-2'>
-            <div className="modal-header border-bottom-0">
-                <h5 className="modal-title">Add new note</h5>
+        <div className='m-0 px-4 noteside'>
+            <div className="d-flex justify-content-between my-2 addnote">
+                <h4 className=" m-0 mx-2 dark-text">Add new note</h4>
                 <Link className="ms-auto " to="/notes">
                 <button type="button" className="btn-close" title='Close' aria-label="Close"></button>
                 </Link>
             </div>
-            <div className="body px-5 my-3">
+            <div className="px-2 my-3 ">
                 <div className="mb-3">
-                    <label htmlFor="title" className="form-label">Title</label>
-                    <input type="text" className="form-control" name='title' id="title" onChange={onChange}/>
+                    <input type="text" className="form-control title" name='title' id="title" placeholder='Title' onChange={onChange}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="description" className="form-label">Description</label>
-                    <textarea className="form-control" name='description' id="description" rows="6" onChange={onChange}></textarea>
+                    <textarea className="form-control" name='description' id="description" placeholder='Description' rows="10" onChange={onChange}></textarea>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="tag" className="form-label">Tag</label>
-                    <input type="text" className="form-control" name='tag' id="tag" onChange={onChange}/>
+                    <input type="text" className="form-control" name='tag' id="tag" placeholder='Tags' onChange={onChange}/>
                 </div>
             </div>
             <div className="d-grid gap-2 col-6 mx-auto">

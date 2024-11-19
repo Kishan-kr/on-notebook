@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import NoteSide from './NoteSide';
-import Profile from './Profile';
+import Profile from './Sidebar';
 import UpdateNote from './UpdateNote';
 import { useNavigate } from 'react-router-dom';
 

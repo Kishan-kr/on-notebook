@@ -1,21 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { noteContext } from '../contexts/NoteContext';
 import { AuthContext } from '../contexts/AuthContext';
 
 function NoteItem(props) {
-  const { note, handleUpdateIcon, readingNote } = props;
-  const { deleteNote } = useContext(noteContext);
-  const {setAlertState} = useContext(AuthContext);
-  let tags = note.tag.split(',');
+  const { note } = props;
+  const { setNote, deleteNote } = useContext(noteContext);
+  const { setAlertState } = useContext(AuthContext);
+  const [date, setDate] = useState('');
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    handleUpdateIcon(note);
+  const formatDate = () => {
+    let dt = new Date(note.createdOn);
+    dt = dt.toLocaleDateString('en-Us', {
+      day : '2-digit',
+      month : 'short',
+      year : 'numeric'
+    });
+
+    setDate(dt);
   }
-
+  
   const cardClick = () => {
-    readingNote(note);
+    setNote(note);
   }
 
   const deletethis = async (e) => {
@@ -37,31 +43,32 @@ function NoteItem(props) {
     }
   }
 
+  useEffect(() => {
+    formatDate();
+
+    // eslint-disable-next-line
+  }, [note])
+  
+
   return (
-    <div className="col-md-6 col-lg-4 col col-xl-3 mx-4 my-3">
-      <Link className="card" style={{ width: '18rem', textDecoration: 'none' }} role={'button'} onClick={cardClick} to={`/notes/view`}>
-        <div className="card-body">
-          <div className="d-flex">
-            <h5 className="card-title">{note.title} </h5>
-            <span role={'button'} className='btn btn-outline-success border-0 p-2 ms-auto' title='Edit' onClick={handleUpdate}>
-              <i className="fa-regular fa-pen-to-square"></i>
-            </span>
-          </div>
-          <div className="mb-2 text-muted tag-list">
-            <div className='d-flex flex-wrap'>{tags.map(tag => {
-              return (<div className='tags px-3 m-1'>{tag}</div>)
-            })}</div>
-          </div>
-          <p className="card-text text-dark">{(note.description.length <= 195) ? note.description : note.description.substring(0, 195) + '...'}</p>
-          <div className="d-flex">
-            <span className='btn btn-outline-warning border-0 p-2 ms-auto' title='Delete' onClick={deletethis}>
-              <i className="fa-solid fa-trash-can" ></i>
-            </span>
-          </div>
-        </div>
-      </Link>
-    </div>
+    <Link 
+      to={'/notes/view'} 
+      title='Open' 
+      onClick={cardClick} 
+      className={`card ${note.color.fg}`} 
+      style={{background: note.color.bg}}>
+
+      <div className="card-info">
+        <div className="card-title head mb-0">{(note.title.length <= 20) ? note.title : note.title.substring(0, 20) + '...'}</div>
+        <p className="card-date">{date}</p>
+        <div className="card-desc sub-head">{(note.description.length <= 112) ? note.description : note.description.substring(0, 112) + '...'}</div>
+      </div>
+      <div className="card-footer border-0 p-0">
+        <button title='Delete' className="container-fluid p-3 delete head  border-end-0" onClick={deletethis}>Delete</button> 
+      </div>
+    </Link>
   )
+
 }
 
 export default NoteItem
