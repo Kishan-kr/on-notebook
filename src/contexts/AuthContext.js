@@ -118,6 +118,8 @@ function AuthState(props) {
             let token = localStorage.getItem('token');
             verifyLoginStatus(token)
         }
+
+        // eslint-disable-next-line
     }, [isLoggedin])
     
     
