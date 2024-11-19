@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+## This is a web application through which you can save your notes on the cloud and can access it on any device at anywhere using the internet.
+## -> It is built using React Js framework and styled with the help of 'Bootstrap' a CSS framework.
+## -> You can use it by simply creating an account there and it is totally free.
+## -> Here is is the url: https://on-notebook.netlify.app/ 
+## -> Thank you for giving some precious time to it ❤.
+# onNotebook - Cloud-Based Note-Taking Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![onNotebook Screenshot](public/onNotebook.svg)
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+onNotebook is a web application that allows you to save and access your notes on the cloud from anywhere using the internet. Built with the React.js framework and styled with Bootstrap, this app provides an efficient and user-friendly way to manage your notes.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Cloud-Based Notes**: Save your notes on the cloud, ensuring accessibility from any device with an internet connection.
+- **User-Friendly Interface**: Enjoy an intuitive and easy-to-navigate user interface.
+- **Note Creation and Editing**: Create, edit, and manage your notes with ease.
+- **Responsive Design**: Access your notes on a desktop, tablet, or mobile device.
+- **Secure Storage**: Your notes are securely stored on the cloud.
+- **Trash**: Recover your deleted notes from trash. Notes will be deleted from the trash permanently after 60 days.
+- **Customization**: Personalize your notes with styling options.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- **React.js**: The web app is developed using the React.js framework.
+- **Bootstrap**: Bootstrap is used for styling and ensuring a responsive design.
+- **Cloud Storage**: Notes are stored on the cloud for accessibility.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Live Site
 
-### `npm run build`
+[Store your note](https://on-notebook.netlify.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Sign in to your account or create a new one.
+2. Create, edit, and manage your notes in a user-friendly environment.
+3. Your notes are saved on the cloud and can be accessed from any device with an internet connection.
